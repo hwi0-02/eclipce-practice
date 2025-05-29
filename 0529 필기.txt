@@ -1,0 +1,57 @@
+개발용 프로그램을 사용할 경우 확인사항
+프로그램의 환경변수(tomcat-server.xml)
+시스템환경변수(path설정)
+
+path의 역할은 언제 어디서든지 콘솔상에서 프로그램을 명령을 실행할 수 있다.
+특수한 환경변수: 자바=>JAVA_HOME, 메이븐=>MAVEN_HOME
+path=%path%;%JAVA_HOME%bin
+
+참고명령)echo %path%, echo %JAVA_HOME%
+***환경변수 재등록 후에 cmd창은 종료후 다시 실행해야 적용된다.***
+
+##웹서버의 기본경로
+D:\work\tomcat\webapps
+위의 경로를 변경하고 싶은 경우
+conf/server/xml 파일의 <Host> </Host>태그 사이에 아래 코드 입력 후 프로그램 다시 실행
+<Context path="web" docBase="C:\tomcat\webapps\imsiweb" privileged="true"/>
+
+확인:localhost:8888/web => imsiweb/index.html => conf/web.xml
+path를 /로 변경하면 다음과 같이 확인 localhost:8888
+
+#자바 컴파일 과정
+java파일 -> javac 컴파일 -> class파일 생성
+실제 사용하는 파일은 class파일, 이 파일을 어떤 특정한 곳에서 넣어서 프로그램실행을 하도록 하면 된다.
+
+##서블렛 처리과정
+자바파일에 서블릿을 상속받아 코드 작성 후 컴파일(class파일 생성)
+webapps/Root/WEB-INF/classes폴더를 생성 후 컴파일 한 파일 넣기
+webapps/Root/WEB-INF/web.xml 파일에 웹서비스를 위한 서블릿 등록
+<servlet></servlet> : 서블릿을 등록(servlet-name, servlet-class)
+<servlet-mapping></servlet-mapping> : 서블릿 주소를 등록(servlet-name. url-pattern)
+#웹브라우저에서 등록된 url-pattern을 실행  	
+
+
+환경변수
+CATALINA_HOME=D:\work\tomcat
+
+##이클립스에서 웹서버 충동해결
+netstat -ano
+taskkill /PID 포트번호 /F 를 입력하면 포트 강제종료
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
